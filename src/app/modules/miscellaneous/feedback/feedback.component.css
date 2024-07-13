@@ -1,0 +1,9 @@
+@media (min-width: 576px) {
+  .container {
+    height: 72vh;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}

@@ -1,0 +1,68 @@
+<div class="container d-flex flex-column justify-content-center margin-top">
+  <div class="row d-flex justify-content-center w-100 no-gutters">
+    <div class="col-lg-6 col-md-8">
+      <mat-card class="w-100">
+        <mat-card-header>
+          <mat-card-title>Login Form</mat-card-title>
+          <mat-card-title class="mb-2">
+            <button type="button" mat-button color="accent" (click)="loginWithTestCredentials()">
+              Login with Test Credentials
+            </button></mat-card-title
+          >
+        </mat-card-header>
+        <mat-card-content class="pb-3">
+          <form #authForm="ngForm" (ngSubmit)="formSubmitted(authForm)">
+            <mat-form-field class="w-100">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                name="email"
+                ngModel
+                required
+                placeholder="Enter your email"
+                #email="ngModel"
+                email
+              />
+            </mat-form-field>
+            <mat-error
+              class="mb-2"
+              *ngIf="(email.invalid && email.touched) || (authForm.submitted && email.invalid)"
+              >Enter a valid email</mat-error
+            >
+
+            <mat-form-field class="w-100">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                type="password"
+                name="password"
+                ngModel
+                required
+                placeholder="Enter your password"
+                minlength="6"
+                #password="ngModel"
+              />
+            </mat-form-field>
+            <mat-error
+              class="mb-2"
+              *ngIf="
+                (password.invalid && password.touched) || (authForm.submitted && password.invalid)
+              "
+              >Password must be atleast 6 characters</mat-error
+            >
+
+            <button type="submit" mat-raised-button color="primary">Login</button>
+            |
+
+            <button type="button" mat-raised-button color="primary" (click)="onSwitch()">
+              Switch to Sign Up
+            </button>
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+          <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

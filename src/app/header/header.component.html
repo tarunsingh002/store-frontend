@@ -1,0 +1,150 @@
+<header>
+  <nav class="navbar fixed-top navbar-expand-lg bg-primary navbar-dark">
+    <a mat-button class="navbar-brand" routerLink="/products/home">Store</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav mr-auto align-items-center">
+        <button
+          mat-button
+          class="nav-link mr-lg-1"
+          routerLinkActive="active"
+          routerLink="/products/home"
+        >
+          Home
+        </button>
+        <button
+          mat-button
+          routerLink="/products/laptops"
+          routerLinkActive="active"
+          class="nav-link mr-lg-1"
+        >
+          Laptops
+        </button>
+        <button
+          mat-button
+          routerLink="/products/mobiles"
+          routerLinkActive="active"
+          class="nav-link mr-lg-1"
+        >
+          Mobiles
+        </button>
+        <button
+          mat-button
+          routerLink="/products/printers"
+          routerLinkActive="active"
+          class="nav-link mr-lg-1"
+        >
+          Printers
+        </button>
+        <button
+          mat-button
+          class="nav-link mr-lg-1"
+          routerLinkActive="active"
+          routerLink="/products/all"
+        >
+          All Products
+        </button>
+        <button
+          mat-button
+          class="nav-link mr-lg-1"
+          routerLinkActive="active"
+          routerLink="/miscellaneous/aboutus"
+        >
+          About
+        </button>
+        <div *ngIf="loggingIn" class="nav-link mr-2">
+          <h3 class="mb-0 signin">Signing you in with a dummy user...</h3>
+        </div>
+      </div>
+      <div class="ml-auto mr-0 d-flex align-items-center">
+        <div *ngIf="auth" class="mr-2">
+          <h2 class="mb-0">
+            {{ firstName }}
+          </h2>
+        </div>
+        <button matTooltip="User Utilities" [matMenuTriggerFor]="menu" mat-icon-button *ngIf="auth">
+          <mat-icon class="account">account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button *ngIf="auth" routerLink="/user/profile" routerLinkActive="active" mat-menu-item>
+            Profile
+          </button>
+          <button
+            routerLinkActive="active"
+            mat-menu-item
+            *ngIf="!webmaster && auth"
+            routerLink="/products/wishlist"
+          >
+            Wishlist
+          </button>
+          <button
+            routerLinkActive="active"
+            mat-menu-item
+            *ngIf="!webmaster && auth"
+            routerLink="/buying/orders"
+          >
+            Orders
+          </button>
+          <button
+            routerLinkActive="active"
+            mat-menu-item
+            *ngIf="webmaster"
+            routerLink="/products/create"
+          >
+            Create
+          </button>
+          <button
+            routerLinkActive="active"
+            mat-menu-item
+            *ngIf="webmaster"
+            routerLink="/admin/allorders"
+          >
+            Orders
+          </button>
+          <button
+            routerLinkActive="active"
+            mat-menu-item
+            *ngIf="webmaster"
+            routerLink="/admin/allwishlisted"
+          >
+            WishLists
+          </button>
+          <button (click)="onLogout()" mat-menu-item>Logout</button>
+        </mat-menu>
+        <button
+          matTooltip="Cart Page"
+          *ngIf="auth && !webmaster"
+          class="mr-1"
+          mat-icon-button
+          routerLink="/buying/cart"
+        >
+          <mat-icon class="cart" [matBadge]="items" [matBadgeHidden]="!items" matBadgeColor="accent"
+            >shopping_cart</mat-icon
+          >
+        </button>
+        <button
+          matTooltip="Feedback from Recruiters"
+          mat-icon-button
+          routerLink="/miscellaneous/feedback"
+        >
+          <mat-icon color="accent" class="feedback">feedback</mat-icon>
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onLoginRegister()"
+          *ngIf="!auth && !loadedAuthPage"
+        >
+          Login/Register
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>

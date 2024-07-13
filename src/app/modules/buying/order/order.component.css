@@ -1,0 +1,8 @@
+.no-orders {
+  height: 72vh;
+}
+
+img {
+  object-fit: cover;
+  object-position: top;
+}

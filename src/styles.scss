@@ -1,0 +1,63 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$blue-palette, 400, 500, 900, 400);
+$my-accent: mat.define-palette(mat.$blue-grey-palette, 200, 500, 900, 300);
+$my-warn: mat.define-palette(mat.$red-palette, 400, 500, 900, 400);
+
+$my-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+      warn: $my-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($my-theme);
+
+// $primary: #3f51b5;
+$primary: #0d47a1;
+$info: #559bd9;
+$danger: #261414;
+$warning: #556d84;
+$secondary: #e9ecef;
+$grid-gutter-width: 40px;
+$font-family-sans-serif: Roboto, 'Helvetica Neue', sans-serif;
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+
+// @media (max-width: 410px) {
+//   html {
+//     font-size: 80%;
+//   }
+// }
+
+* {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.margin-top {
+  margin-top: 90px;
+}
+
+.snackbar-error {
+  --mdc-snackbar-container-color: #ff8a80 !important;
+  // --mdc-snackbar-supporting-text-color: red !important;
+  // --mat-snack-bar-button-color: #ff4081;
+}
+
+.snackbar-primary {
+  --mdc-snackbar-container-color: #42a5f5 !important;
+  // --mdc-snackbar-supporting-text-color: red !important;
+  // --mat-snack-bar-button-color: #ff4081;
+}
+
+.border-right {
+  border-right: 0.1px solid #b0bec5 !important;
+}

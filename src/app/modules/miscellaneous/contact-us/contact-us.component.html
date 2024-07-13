@@ -1,0 +1,62 @@
+<div class="container d-flex flex-column justify-content-center margin-top">
+  <div class="row d-flex justify-content-center w-100 no-gutters">
+    <div class="col-lg-8">
+      <mat-card class="w-100">
+        <mat-card-header>
+          <mat-card-title class="mb-2">Contact Us</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="pb-3">
+          <form #contactForm="ngForm">
+            <mat-form-field class="w-100">
+              <mat-label>Name</mat-label>
+              <input
+                matInput
+                name="name"
+                ngModel
+                required
+                placeholder="Enter your name"
+                #name="ngModel"
+                minlength="2"
+              />
+            </mat-form-field>
+            <mat-error
+              class="mb-2"
+              *ngIf="(name.invalid && name.touched) || (contactForm.submitted && name.invalid)"
+              >Minimum 2 characters</mat-error
+            >
+            <mat-form-field class="w-100">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                name="email"
+                ngModel
+                required
+                placeholder="Enter your email"
+                #email="ngModel"
+                email
+              />
+            </mat-form-field>
+            <mat-error
+              class="mb-2"
+              *ngIf="(email.invalid && email.touched) || (contactForm.submitted && email.invalid)"
+              >Enter a valid email</mat-error
+            >
+
+            <mat-form-field class="w-100">
+              <mat-label>Query</mat-label>
+              <textarea rows="4" matInput name="query" ngModel #query="ngModel" required></textarea>
+            </mat-form-field>
+            <mat-error
+              class="mb-2"
+              *ngIf="(query.invalid && query.touched) || (contactForm.submitted && query.invalid)"
+              >Query must be atleast 6 characters</mat-error
+            >
+            <div>
+              <button type="submit" mat-raised-button color="primary">Submit</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

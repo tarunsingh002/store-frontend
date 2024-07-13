@@ -1,0 +1,17 @@
+app-loading-spinner {
+  height: 76vh;
+}
+
+main {
+  margin-top: 64px;
+}
+
+@media (max-width: 992px) {
+  main {
+    margin-top: 55.5px;
+  }
+}
+
+mat-toolbar {
+  height: 15vh;
+}

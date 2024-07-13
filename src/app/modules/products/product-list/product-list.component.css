@@ -1,0 +1,51 @@
+img {
+  object-fit: cover;
+  object-position: top;
+  /* object-position: center top; */
+}
+
+.button-on-image {
+  position: absolute;
+  top: 13px;
+  right: 5px;
+}
+
+[mat-button] {
+  color: white;
+  font-size: 15px;
+}
+
+.margin-top {
+  margin-top: 90px;
+}
+
+.margin-top-loggingIn {
+  margin-top: 26.1px;
+}
+
+@media (max-width: 992px) {
+  .margin-top-loggingIn {
+    margin-top: 34.5px;
+  }
+}
+
+.form-field,
+mat-form-field,
+mat-card {
+  width: 100%;
+}
+
+mat-paginator {
+  width: 341px;
+}
+
+.custom-select {
+  flex: 0 0 1;
+}
+
+.sidebar {
+  height: 157vh;
+}
+.no-products {
+  height: 65vh;
+}

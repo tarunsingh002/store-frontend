@@ -1,0 +1,25 @@
+.margin-top {
+  margin-top: 90px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-left: 130px !important;
+    padding-right: 130px !important;
+    max-width: none !important;
+  }
+}
+
+img {
+  object-fit: cover;
+  object-position: top;
+  /* object-position: center top; */
+}
+
+[mat-raised-button] {
+  font-size: 17px;
+}
+
+.empty {
+  height: 72vh;
+}

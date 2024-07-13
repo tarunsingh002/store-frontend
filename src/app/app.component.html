@@ -1,0 +1,13 @@
+<app-header></app-header>
+<main>
+  <app-loading-spinner
+    class="d-flex justify-content-center align-items-center w-100"
+    *ngIf="isLoading"
+  ></app-loading-spinner>
+  <router-outlet *ngIf="!isLoading"></router-outlet>
+</main>
+
+<mat-toolbar class="d-flex flex-column justify-content-center align-items-center">
+  <div>Store &copy; 2024</div>
+  <button mat-button color="primary" routerLink="/miscellaneous/contactus">Contact Us</button>
+</mat-toolbar>

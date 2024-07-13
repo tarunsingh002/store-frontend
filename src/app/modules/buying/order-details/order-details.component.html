@@ -1,0 +1,44 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title
+      ><button
+        class="mb-2"
+        mat-raised-button
+        mat-dialog-close
+        [routerLink]="['/products', 'details', data.orderItem.product.productId]"
+      >
+        {{ data.orderItem.product.name }}
+      </button>
+    </mat-card-title>
+    <mat-card-subtitle>Ordered on {{ data.timestamp }}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="data.orderDeliveryStatus"
+      >Delivered on {{ data.deliveredTimestamp }}</mat-card-subtitle
+    >
+    <mat-card-subtitle *ngIf="!data.orderDeliveryStatus"
+      >Scheduled to be Delivered on {{ data.deliveredTimestamp }}</mat-card-subtitle
+    >
+    <mat-card-subtitle class="mb-1"
+      >OrderId {{ data.orderId }} and Order ItemId
+      {{ data.orderItem.orderItemId }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <img mat-card-image [src]="data.orderItem.product.url" alt="Photo of a Shiba Inu" />
+  <mat-card-content class="mt-2">
+    <mat-card-subtitle>Addressee name: {{ name }}</mat-card-subtitle>
+    <mat-card-subtitle>Delivery Address: {{ address }}</mat-card-subtitle>
+    <mat-card-subtitle>Quantity: {{ data.orderItem.quantity }}</mat-card-subtitle>
+    <mat-card-subtitle
+      >Price Per Piece: Rs.{{
+        data.orderItem.product.price.toLocaleString('en-IN')
+      }}</mat-card-subtitle
+    >
+    <mat-card-subtitle
+      >Total Amount: Rs.{{
+        (data.orderItem.quantity * data.orderItem.product.price).toLocaleString('en-IN')
+      }}</mat-card-subtitle
+    >
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button mat-dialog-close>Close</button>
+  </mat-card-actions>
+</mat-card>

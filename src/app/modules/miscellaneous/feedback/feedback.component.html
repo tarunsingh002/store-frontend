@@ -1,0 +1,34 @@
+<div class="container margin-top">
+  <h2 class="text-center mb-4">Quick Feedback</h2>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+      <form class="mb-3" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field>
+          <mat-label for="name">Company Name (optional)</mat-label>
+          <input matInput type="text" name="name" ngModel #name="ngModel" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Feedback</mat-label>
+          <textarea
+            placeholder="Feedback on my projects"
+            rows="8"
+            matInput
+            name="feedback"
+            ngModel
+            #feedback="ngModel"
+            required
+            minlength="6"
+          ></textarea>
+        </mat-form-field>
+        <mat-error
+          class="d-block"
+          *ngIf="(feedback.invalid && feedback.touched) || (feedback.invalid && f.submitted)"
+          >Minimum 6 characters are required.</mat-error
+        >
+
+        <button class="mt-2" mat-raised-button color="primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

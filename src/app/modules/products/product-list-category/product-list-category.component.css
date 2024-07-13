@@ -1,0 +1,58 @@
+img {
+  object-fit: cover;
+  object-position: top;
+  /* aspect-ratio: 1.1 !important; */
+  width: 288px !important;
+}
+
+.button-on-image {
+  position: absolute;
+  top: 13px;
+  right: 5px;
+}
+
+@media (max-width: 650px) {
+  img {
+    width: 96px !important;
+  }
+}
+
+.margin-top {
+  margin-top: 90px;
+}
+
+.margin-top-loggingIn {
+  margin-top: 26.1px;
+}
+
+@media (max-width: 992px) {
+  .margin-top-loggingIn {
+    margin-top: 34.5px;
+  }
+}
+
+.form-field,
+mat-form-field {
+  width: 100%;
+}
+
+mat-card {
+  width: 90%;
+}
+
+@media (max-width: 840px) {
+  mat-card {
+    width: 100%;
+  }
+}
+
+mat-paginator {
+  width: 341px;
+}
+
+.sidebar {
+  height: 58vh;
+}
+.no-products {
+  height: 58vh;
+}

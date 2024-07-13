@@ -1,0 +1,31 @@
+.carousel-items {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.carousel_item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.6;
+  transition: all 0.5s linear;
+  flex-shrink: 0;
+}
+
+img {
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
+mat-card img {
+  height: 350px;
+}
+
+mat-card {
+  transition: 600ms transform ease-in-out;
+}
+
+mat-card:hover {
+  transform: scale(1.02);
+}

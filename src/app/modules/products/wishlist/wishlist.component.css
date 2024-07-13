@@ -1,0 +1,18 @@
+.margin-top {
+  margin-top: 90px;
+}
+
+img {
+  object-fit: cover;
+  object-position: top;
+}
+
+.button-on-image {
+  position: absolute;
+  top: 13px;
+  right: 5px;
+}
+
+.empty {
+  height: 72vh;
+}
