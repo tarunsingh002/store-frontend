@@ -24,7 +24,7 @@ export const carousel = [
     images: [
       'https://thumbs.dreamstime.com/z/close-up-white-microsoft-xbox-one-wilreless-video-game-controller-taipei-taiwan-may-floating-white-microsoft-xbox-one-151460953.jpg?w=1200',
       'https://thumbs.dreamstime.com/z/bangkok-thailand-sep-sony-playstation-s-dualshock-wireless-controller-isolated-white-background-illustrative-editorial-content-127622525.jpg?w=1200',
-      'https://thumbs.dreamstime.com/z/playstation-game-controller-isolated-white-background-black-joystick-gaming-five-sony-ps-gamepad-up-close-215074787.jpg?w=1200',
+      'https://thumbs.dreamstime.com/z/gaming-console-controller-isolated-blue-plastic-analog-gamepad-device-over-white-background-54117087.jpg?w=1200',
       'https://thumbs.dreamstime.com/z/belarus-brest-june-black-dell-p-d-monitor-screen-isolated-white-background-side-view-black-dell-p-d-monitor-screen-isolated-175603110.jpg?w=992',
       'https://thumbs.dreamstime.com/z/black-red-gaming-headphones-microphone-isolated-white-background-over-ear-309624934.jpg?w=1200',
     ],
