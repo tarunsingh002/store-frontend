@@ -175,12 +175,12 @@ export class AuthService {
   }
 
   logout() {
+    this.router.navigate(['/auth', 'signin']);
     this.User.next(null);
     this.cartPageService.cartChanged.next(null);
     this.cartPageService.cart = [];
     localStorage.removeItem('userData');
     localStorage.removeItem('cart');
-    this.router.navigate(['/auth', 'signin']);
     if (this.refreshTokenExpirationTimer) {
       clearTimeout(this.refreshTokenExpirationTimer);
     }

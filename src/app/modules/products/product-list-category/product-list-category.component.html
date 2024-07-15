@@ -14,7 +14,7 @@
   <!-- Side Bar -->
   <div class="col-md-2 d-none d-md-block border-right">
     <div class="sidebar d-flex flex-column justify-content-between">
-      <h3>Filter by</h3>
+      <h2>Filter by</h2>
       <div class="brand-filter">
         <!-- Filter by Brands -->
         <section class="example-section" [formGroup]="rForm">
@@ -107,8 +107,8 @@
                 </button>
                 <button
                   matTooltip="Add Product to Cart"
-                  mat-icon-button
-                  color="primary"
+                  mat-mini-fab
+                  color="accent"
                   *ngIf="!webmaster"
                   (click)="addToCart(product)"
                 >
@@ -126,9 +126,22 @@
               </mat-card-title>
               <mat-card-subtitle
                 class="ml-2 mb-2 mr-4"
-                *ngFor="let s of product.specification.split(',')"
+                *ngFor="let s of product.specification.split(',').splice(0, 6)"
                 >&#x2022; {{ s.trim() }}</mat-card-subtitle
               >
+              <!-- <mat-card-subtitle>
+                <button
+                  matTooltip="Add Product to Cart"
+                  mat-fab
+                  extended
+                  color="accent"
+                  *ngIf="!webmaster"
+                  (click)="addToCart(product)"
+                >
+                  <mat-icon>add_shopping_cart</mat-icon>
+                  Add to Cart
+                </button>
+              </mat-card-subtitle> -->
 
               <img *ngIf="smallPic" mat-card-sm-image [src]="product.url" />
               <img *ngIf="largePic" mat-card-xl-image [src]="product.url" />

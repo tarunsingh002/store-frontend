@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Subscription} from 'rxjs';
 import {User} from 'src/app/models/user.model';
 import {AuthService} from 'src/app/services/auth-services/auth.service';
 import {ProfileService} from 'src/app/services/profile.service';
@@ -10,13 +11,14 @@ import {ProfileService} from 'src/app/services/profile.service';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   isLoading = false;
   profileForm: FormGroup;
   currentUserDetails: User;
   // currentFirstName: string;
   // currentLastName: string;
   profileFormNoChange = true;
+  userSub: Subscription;
 
   constructor(
     private authS: AuthService,
@@ -30,12 +32,14 @@ export class ProfileComponent implements OnInit {
       lastName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
     });
 
-    this.authS.User.subscribe((user) => {
-      this.currentUserDetails = user;
-      this.profileForm.setValue({
-        firstName: user.firstName,
-        lastName: user.lastName,
-      });
+    this.userSub = this.authS.User.subscribe((user) => {
+      if (!!user) {
+        this.currentUserDetails = user;
+        this.profileForm.setValue({
+          firstName: user.firstName,
+          lastName: user.lastName,
+        });
+      }
     });
 
     this.profileForm.valueChanges.subscribe((res) => {
@@ -46,6 +50,10 @@ export class ProfileComponent implements OnInit {
         this.profileFormNoChange = true;
       else this.profileFormNoChange = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 
   onProfileFormSubmitted(profileForm: FormGroup, trackSubmission: NgForm) {

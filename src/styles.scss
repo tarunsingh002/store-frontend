@@ -61,3 +61,7 @@ body {
 .border-right {
   border-right: 0.1px solid #b0bec5 !important;
 }
+
+.mat-badge-content {
+  --mat-badge-background-color: #e57373;
+}

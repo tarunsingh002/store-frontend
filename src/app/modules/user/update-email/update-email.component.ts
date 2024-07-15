@@ -27,10 +27,12 @@ export class UpdateEmailComponent implements OnInit {
     });
 
     this.authS.User.subscribe((user) => {
-      this.currentEmail = user.email;
-      this.emailUpdateForm.setValue({
-        email: user.email,
-      });
+      if (!!user) {
+        this.currentEmail = user.email;
+        this.emailUpdateForm.setValue({
+          email: user.email,
+        });
+      }
     });
 
     this.emailUpdateForm.valueChanges.subscribe((res) => {

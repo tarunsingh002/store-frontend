@@ -64,13 +64,14 @@
         </div>
       </div>
       <div class="ml-auto mr-0 d-flex align-items-center">
-        <div *ngIf="auth" class="mr-2">
+        <!-- <div *ngIf="auth" class="mr-2">
           <h2 class="mb-0">
             {{ firstName }}
           </h2>
-        </div>
-        <button matTooltip="User Utilities" [matMenuTriggerFor]="menu" mat-icon-button *ngIf="auth">
+        </div> -->
+        <button [matMenuTriggerFor]="menu" mat-fab extended *ngIf="auth" class="mr-3 my-1">
           <mat-icon class="account">account_circle</mat-icon>
+          {{ firstName }}
         </button>
         <mat-menu #menu="matMenu">
           <button *ngIf="auth" routerLink="/user/profile" routerLinkActive="active" mat-menu-item>
@@ -119,21 +120,17 @@
           <button (click)="onLogout()" mat-menu-item>Logout</button>
         </mat-menu>
         <button
-          matTooltip="Cart Page"
           *ngIf="auth && !webmaster"
-          class="mr-1"
-          mat-icon-button
+          class="mr-1 my-1"
+          mat-fab
+          extended
           routerLink="/buying/cart"
+          [matBadge]="items"
+          [matBadgeHidden]="!items"
         >
-          <mat-icon class="cart" [matBadge]="items" [matBadgeHidden]="!items" matBadgeColor="accent"
-            >shopping_cart</mat-icon
-          >
+          <mat-icon class="cart">shopping_cart</mat-icon>Cart
         </button>
-        <button
-          matTooltip="Feedback from Recruiters"
-          mat-icon-button
-          routerLink="/miscellaneous/feedback"
-        >
+        <button mat-icon-button extended routerLink="/miscellaneous/feedback">
           <mat-icon color="accent" class="feedback">feedback</mat-icon>
         </button>
         <button

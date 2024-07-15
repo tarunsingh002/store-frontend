@@ -7,19 +7,23 @@
 }
 
 .feedback {
-  /* color: #90caf9; */
-  color: #bbdefb;
+  color: #90caf9;
+  /* color: #64b5f6; */
+  /* color: #bbdefb; */
+  /* color: #1565c0; */
 }
 
 .cart {
   /* color: #90caf9; */
-  color: #bbdefb;
+  /* color: #bbdefb; */
+  color: #1565c0;
 }
 
 .account {
   /* color: #b0beb5; */
   /* color: #90caf9; */
-  color: #bbdefb;
+  /* color: #bbdefb; */
+  color: #1565c0;
 }
 
 .active {
@@ -33,4 +37,9 @@
 
 a[mat-button] {
   font-size: 17px;
+}
+
+button[mat-button] {
+  font-size: 15px;
+  padding: 4px;
 }
