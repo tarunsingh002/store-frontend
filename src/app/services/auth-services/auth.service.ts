@@ -1,4 +1,4 @@
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, throwError} from 'rxjs';
 import {User} from '../../models/user.model';

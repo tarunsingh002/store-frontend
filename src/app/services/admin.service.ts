@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth-services/auth.service';
 import {order} from './auth-services/user.service';

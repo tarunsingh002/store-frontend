@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, of} from 'rxjs';
 import {switchMap, take, tap} from 'rxjs/operators';

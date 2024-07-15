@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {apiUrl} from '../utilities';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 export interface Feedback {
   companyName: String;

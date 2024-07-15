@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import {User} from '../../models/user.model';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {Cart} from '../../models/cart.model';
 
 import {CartPageService} from '../cart-page.service';
