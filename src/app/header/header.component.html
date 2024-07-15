@@ -59,16 +59,11 @@
         >
           About
         </button>
-        <div *ngIf="loggingIn" class="nav-link mr-2">
-          <h3 class="mb-0 signin">Signing you in with a dummy user...</h3>
+        <div class="nav-link mr-2">
+          <h5 *ngIf="loggingIn" class="mb-0 signin">Signing you in with a dummy user...</h5>
         </div>
       </div>
       <div class="ml-auto mr-0 d-flex align-items-center">
-        <!-- <div *ngIf="auth" class="mr-2">
-          <h2 class="mb-0">
-            {{ firstName }}
-          </h2>
-        </div> -->
         <button [matMenuTriggerFor]="menu" mat-fab extended *ngIf="auth" class="mr-3">
           <mat-icon class="account">account_circle</mat-icon>
           {{ firstName }}
