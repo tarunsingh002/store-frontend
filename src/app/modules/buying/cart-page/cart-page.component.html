@@ -1,16 +1,16 @@
 <div class="container margin-top">
   <div *ngIf="!cart.length" class="w-100 empty d-flex align-items-center justify-content-center">
-    <h3 class="display-3">Your Cart is empty</h3>
+    <h2>Your Cart is empty</h2>
   </div>
   <div *ngIf="cart.length">
-    <h2 class="text-center mb-4">Your Cart</h2>
+    <h4 class="text-center mb-5">Your Cart</h4>
     <div class="row">
       <div class="col-lg-8">
         <mat-card class="mb-5" *ngFor="let c of cart; let i = index">
           <mat-card-header>
             <mat-card-title-group>
               <mat-card-title
-                class="mb-2 d-flex flex-column flex-xl-row align-items-start align-items-xl-center"
+                class="mb-1 d-flex flex-column flex-xl-row align-items-start align-items-xl-center"
                 ><button
                   class="mb-2 mb-xl-0 mr-xl-2"
                   [routerLink]="['/products', 'details', c.product.productId]"
@@ -40,7 +40,7 @@
                 </div>
               </mat-card-title>
               <mat-card-subtitle
-                class="ml-2 mb-2 mr-4"
+                class="mb-1 mr-4"
                 *ngFor="let s of c.product.specification.split(',').slice(0, 3)"
                 >&#x2022; {{ s.trim() }}</mat-card-subtitle
               >
@@ -49,9 +49,9 @@
             </mat-card-title-group>
           </mat-card-header>
           <mat-card-content>
-            <h3 class="ml-2">
+            <h6>
               {{ 'Rs.' + c.product.price.toLocaleString('en-IN') }}
-            </h3>
+            </h6>
           </mat-card-content>
         </mat-card>
       </div>
@@ -62,18 +62,18 @@
           </mat-card-header>
           <mat-card-content>
             <div class="d-flex justify-content-between w-100">
-              <h4>Amount ({{ cartItems }} items):</h4>
-              <h4>Rs.{{ cartTotal.toLocaleString('en-IN') }}</h4>
+              <h6>Amount ({{ cartItems }} items):</h6>
+              <h6>Rs.{{ cartTotal.toLocaleString('en-IN') }}</h6>
             </div>
             <mat-divider class="mb-3"></mat-divider>
             <div class="d-flex justify-content-between w-100">
-              <h4>Delivery Charges:</h4>
-              <h4>Free</h4>
+              <h6>Delivery Charges:</h6>
+              <h6>Free</h6>
             </div>
             <mat-divider class="mb-3"></mat-divider>
             <div class="d-flex justify-content-between w-100">
-              <h1>Total Amount:</h1>
-              <h1>Rs.{{ cartTotal.toLocaleString('en-IN') }}</h1>
+              <h5>Total Amount:</h5>
+              <h5>Rs.{{ cartTotal.toLocaleString('en-IN') }}</h5>
             </div>
             <mat-divider class="mb-3"></mat-divider>
           </mat-card-content>

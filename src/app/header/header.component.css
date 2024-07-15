@@ -43,3 +43,13 @@ button[mat-button] {
   font-size: 15px;
   padding: 4px;
 }
+
+@media (min-width: 992px) {
+  nav {
+    height: 72px;
+  }
+}
+
+nav {
+  z-index: 20;
+}

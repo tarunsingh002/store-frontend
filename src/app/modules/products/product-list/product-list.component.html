@@ -1,4 +1,5 @@
 <!-- Logging In with Dummy user -->
+<!-- Searching-Sorting-Filtering-login loading -->
 <mat-progress-bar
   *ngIf="loggingIn || sorting || searching || filtering || togglingWishlist"
   color="warn"
@@ -14,11 +15,11 @@
   <!-- Side Bar -->
   <div class="col-md-2 d-none d-md-block border-right">
     <div class="sidebar d-flex flex-column justify-content-between">
-      <h2>Filter by</h2>
+      <h4>Filter by</h4>
       <div class="brand-filter">
         <!-- Filter by Brands -->
         <section [formGroup]="rForm">
-          <h4>Brands:</h4>
+          <h5>Brand</h5>
           <p *ngFor="let brand of brands; let i = index">
             <mat-checkbox [formControlName]="'brand' + (i + 1)">{{ brand }}</mat-checkbox>
           </p>
@@ -27,7 +28,7 @@
       <!-- Filter By Category -->
       <div class="category-filter">
         <section [formGroup]="rForm1">
-          <h4>Categories:</h4>
+          <h5>Category</h5>
           <p *ngFor="let category of categories; let i = index">
             <mat-checkbox [formControlName]="'category' + (i + 1)">{{ category }}</mat-checkbox>
           </p>
@@ -70,8 +71,6 @@
       </div>
     </div>
 
-    <!-- Searching-Sorting-Filtering-login loading -->
-
     <!-- Searching-Filtering results line -->
 
     <div
@@ -105,9 +104,9 @@
           <mat-card-header>
             <mat-card-title-group>
               <mat-card-title
-                class="mb-3 d-flex flex-column flex-xl-row align-items-start align-items-xl-center"
+                class="mb-2 d-flex flex-column flex-xl-row align-items-start align-items-xl-center"
                 ><button
-                  class="mb-2 mb-xl-0 mr-xl-2"
+                  class="mb-3 mb-xl-0 mr-xl-3"
                   [routerLink]="['/products', 'details', product.productId]"
                   mat-flat-button
                   color="primary"
@@ -116,8 +115,8 @@
                 </button>
                 <button
                   matTooltip="Add Product to Cart"
-                  mat-icon-button
-                  color="primary"
+                  mat-mini-fab
+                  color="accent"
                   *ngIf="!webmaster"
                   (click)="addToCart(product)"
                 >
@@ -134,7 +133,7 @@
                 </button>
               </mat-card-title>
               <mat-card-subtitle
-                class="ml-2 mb-2 mr-4"
+                class="mb-1 mr-4"
                 *ngFor="let s of product.specification.split(',').slice(0, 4)"
                 >&#x2022; {{ s.trim() }}</mat-card-subtitle
               >
@@ -173,9 +172,9 @@
             <mat-icon>delete</mat-icon>
           </button>
           <mat-card-content>
-            <h3 class="ml-2">
+            <h6>
               {{ 'Rs.' + product.price.toLocaleString('en-IN') }}
-            </h3>
+            </h6>
           </mat-card-content>
         </mat-card>
       </div>

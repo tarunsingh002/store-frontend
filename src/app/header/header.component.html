@@ -69,7 +69,7 @@
             {{ firstName }}
           </h2>
         </div> -->
-        <button [matMenuTriggerFor]="menu" mat-fab extended *ngIf="auth" class="mr-3 my-1">
+        <button [matMenuTriggerFor]="menu" mat-fab extended *ngIf="auth" class="mr-3">
           <mat-icon class="account">account_circle</mat-icon>
           {{ firstName }}
         </button>
@@ -121,16 +121,22 @@
         </mat-menu>
         <button
           *ngIf="auth && !webmaster"
-          class="mr-1 my-1"
+          class="mr-1"
           mat-fab
           extended
           routerLink="/buying/cart"
           [matBadge]="items"
           [matBadgeHidden]="!items"
+          matBadgeColor="warn"
         >
           <mat-icon class="cart">shopping_cart</mat-icon>Cart
         </button>
-        <button mat-icon-button extended routerLink="/miscellaneous/feedback">
+        <button
+          matTooltip="Feedback from Recruiters"
+          mat-icon-button
+          extended
+          routerLink="/miscellaneous/feedback"
+        >
           <mat-icon color="accent" class="feedback">feedback</mat-icon>
         </button>
         <button

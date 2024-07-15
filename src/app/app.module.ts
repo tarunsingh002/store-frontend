@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 
@@ -50,19 +50,25 @@ const routes: Routes = [
   },
 ];
 
-@NgModule({ declarations: [AppComponent, HeaderComponent],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-        SharedModule,
-        MatButtonModule,
-        MatIconModule,
-        MatBadgeModule,
-        MatMenuModule,
-        MatTooltipModule,
-        MatToolbarModule], providers: [
-        provideHttpClient(withInterceptorsFromDi()),
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        provideAnimationsAsync(),
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
+@NgModule({
+  declarations: [AppComponent, HeaderComponent],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
+    SharedModule,
+    MatButtonModule,
+    MatIconModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatToolbarModule,
+  ],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    provideAnimationsAsync(),
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
+})
 export class AppModule {}

@@ -14,11 +14,11 @@
   <!-- Side Bar -->
   <div class="col-md-2 d-none d-md-block border-right">
     <div class="sidebar d-flex flex-column justify-content-between">
-      <h2>Filter by</h2>
+      <h4>Filter By</h4>
       <div class="brand-filter">
         <!-- Filter by Brands -->
         <section class="example-section" [formGroup]="rForm">
-          <h4>Brands:</h4>
+          <h5>Brand</h5>
           <p *ngFor="let brand of brands; let i = index">
             <mat-checkbox [formControlName]="'brand' + (i + 1)">{{ brand }}</mat-checkbox>
           </p>
@@ -64,7 +64,7 @@
     <!-- Searching-Filtering results line -->
 
     <div
-      *ngIf="usingSearch || usingFilter1"
+      *ngIf="(usingSearch || usingFilter1) && products.length"
       class="d-flex justify-content-center mb-4 results-line"
     >
       <h3 *ngIf="usingSearch && usingFilter1">
@@ -83,9 +83,9 @@
       *ngIf="!products.length"
       class="w-100 no-products d-flex align-items-center justify-content-center"
     >
-      <h2 class="text-center">
+      <h4 class="text-center">
         There are currently no products as per your search query and/or applied filter.
-      </h2>
+      </h4>
     </div>
     <ng-container *ngIf="products.length">
       <div
@@ -98,7 +98,7 @@
               <mat-card-title
                 class="mb-2 d-flex flex-column flex-sm-row align-items-start align-items-sm-center"
                 ><button
-                  class="mb-2 mb-sm-0 mr-sm-2"
+                  class="mb-2 mb-sm-0 mr-sm-4"
                   [routerLink]="['/products', 'details', product.productId]"
                   mat-flat-button
                   color="primary"
@@ -125,23 +125,10 @@
                 </button>
               </mat-card-title>
               <mat-card-subtitle
-                class="ml-2 mb-2 mr-4"
+                class="mb-1 mr-4"
                 *ngFor="let s of product.specification.split(',').splice(0, 6)"
                 >&#x2022; {{ s.trim() }}</mat-card-subtitle
               >
-              <!-- <mat-card-subtitle>
-                <button
-                  matTooltip="Add Product to Cart"
-                  mat-fab
-                  extended
-                  color="accent"
-                  *ngIf="!webmaster"
-                  (click)="addToCart(product)"
-                >
-                  <mat-icon>add_shopping_cart</mat-icon>
-                  Add to Cart
-                </button>
-              </mat-card-subtitle> -->
 
               <img *ngIf="smallPic" mat-card-sm-image [src]="product.url" />
               <img *ngIf="largePic" mat-card-xl-image [src]="product.url" />
@@ -178,9 +165,9 @@
           </button>
 
           <mat-card-content>
-            <h3>
+            <h5>
               {{ 'Rs.' + product.price.toLocaleString('en-IN') }}
-            </h3>
+            </h5>
           </mat-card-content>
         </mat-card>
       </div>

@@ -38,6 +38,10 @@ export class WishlistComponent implements OnInit {
   addProductToCart(product: Product) {
     this.cservice.addToCart(product, 1);
     // this.router.navigate(['/buying/cart']);
+    this.snackBarService.open('An item of this product was added to cart', 'Great!', {
+      duration: 4000,
+      panelClass: 'snackbar-primary',
+    });
   }
   removeProduct(product: Product) {
     if (confirm('Are you sure you want to remove this product from your wishlist?')) {

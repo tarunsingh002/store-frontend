@@ -6,15 +6,15 @@
     <h2>You have no products in the wishlist</h2>
   </div>
   <div class="w-100" *ngIf="products.length">
-    <h2 class="text-center mb-5">Your Wishlist</h2>
+    <h4 class="text-center mb-5">Your Wishlist</h4>
     <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
     <mat-card class="mb-5" *ngFor="let product of products; let i = index">
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title
-            class="mb-2 d-flex flex-column flex-sm-row align-items-start align-items-sm-center"
+            class="mb-1 d-flex flex-column flex-sm-row align-items-start align-items-sm-center"
             ><button
-              class="mb-2 mb-sm-0 mr-sm-2"
+              class="mb-2 mb-sm-0 mr-sm-4"
               [routerLink]="['/products', 'details', product.productId]"
               mat-flat-button
               color="primary"
@@ -23,16 +23,15 @@
             </button>
             <button
               matTooltip="Add Product to Cart"
-              mat-icon-button
-              color="primary"
-              *ngIf="!webmaster"
+              mat-mini-fab
+              color="accent"
               (click)="addProductToCart(product)"
             >
               <mat-icon>add_shopping_cart</mat-icon>
             </button>
           </mat-card-title>
           <mat-card-subtitle
-            class="ml-2 mb-2 mr-4"
+            class="mb-1 mr-4"
             *ngFor="let s of product.specification.split(',').slice(0, 3)"
             >&#x2022; {{ s.trim() }}</mat-card-subtitle
           >
@@ -50,9 +49,9 @@
         <mat-icon>delete</mat-icon>
       </button>
       <mat-card-content>
-        <h3 class="ml-2">
+        <h6>
           {{ 'Rs.' + product.price.toLocaleString('en-IN') }}
-        </h3>
+        </h6>
       </mat-card-content>
     </mat-card>
   </div>

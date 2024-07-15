@@ -6,13 +6,13 @@
     <h3 class="display-3 text-center">You have not placed any orders</h3>
   </div>
   <div *ngIf="orders.length" class="mb-5">
-    <h2 class="text-center mb-5">Your Orders</h2>
+    <h4 class="text-center mb-5">Your Orders</h4>
     <ng-container *ngFor="let order of orders; let i = index">
       <ng-container *ngFor="let p of order.orderItems; let j = index">
         <mat-card class="mb-5">
           <mat-card-header>
             <mat-card-title-group>
-              <mat-card-title class="mb-3">
+              <mat-card-title class="mb-2">
                 <button
                   matTooltip="Click to view Order Details"
                   (click)="
@@ -31,17 +31,15 @@
                 </button>
               </mat-card-title>
               <mat-card-subtitle
-                class="ml-2 mb-2 mr-4"
-                *ngFor="let s of p.product.specification.split(',').slice(0, 6)"
+                class="mb-1 mr-4"
+                *ngFor="let s of p.product.specification.split(',').slice(0, 5)"
                 >&#x2022; {{ s.trim() }}</mat-card-subtitle
               >
-              <mat-card-subtitle class="ml-2 mb-2 mr-4"
-                >Quantity: {{ p.quantity }}
-              </mat-card-subtitle>
-              <mat-card-subtitle *ngIf="orderDeliveryStatus[i]" class="ml-2 mb-2 mr-4"
+              <mat-card-subtitle class="mb-1 mr-4">Quantity: {{ p.quantity }} </mat-card-subtitle>
+              <mat-card-subtitle *ngIf="orderDeliveryStatus[i]" class="mb-1 mr-4"
                 >{{ 'Delivered on ' + orderDeliveryTimeStamps[i] }}
               </mat-card-subtitle>
-              <mat-card-subtitle *ngIf="!orderDeliveryStatus[i]" class="ml-2 mb-2 mr-4"
+              <mat-card-subtitle *ngIf="!orderDeliveryStatus[i]" class="mb-1 mr-4"
                 >{{ 'Scheduled to be Delivered on ' + orderDeliveryTimeStamps[i] }}
               </mat-card-subtitle>
               <img mat-card-xl-image *ngIf="largePic" [src]="p.product.url" />
@@ -49,9 +47,7 @@
             </mat-card-title-group>
           </mat-card-header>
           <mat-card-content>
-            <h3 class="ml-2 mb-0">
-              Rs.{{ (p.product.price * p.quantity).toLocaleString('en-IN') }}
-            </h3>
+            <h5 class="mb-0">Rs.{{ (p.product.price * p.quantity).toLocaleString('en-IN') }}</h5>
           </mat-card-content>
         </mat-card>
       </ng-container>

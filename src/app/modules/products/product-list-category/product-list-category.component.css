@@ -2,7 +2,7 @@ img {
   object-fit: cover;
   object-position: top;
   /* aspect-ratio: 1.1 !important; */
-  width: 288px !important;
+  /* width: 288px !important; */
 }
 
 .button-on-image {
@@ -22,7 +22,7 @@ img {
 }
 
 .margin-top-loggingIn {
-  margin-top: 26.1px;
+  margin-top: 18px;
 }
 
 @media (max-width: 992px) {
@@ -51,7 +51,7 @@ mat-paginator {
 }
 
 .sidebar {
-  height: 58vh;
+  height: 62vh;
 }
 .no-products {
   height: 58vh;

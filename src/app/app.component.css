@@ -1,9 +1,9 @@
 app-loading-spinner {
-  height: 76vh;
+  height: 75vh;
 }
 
 main {
-  margin-top: 64px;
+  margin-top: 72px;
 }
 
 @media (max-width: 992px) {

@@ -2,11 +2,11 @@
 
 @include mat.core();
 
-$my-primary: mat.define-palette(mat.$blue-palette, 400, 500, 900, 400);
-$my-accent: mat.define-palette(mat.$blue-grey-palette, 200, 500, 900, 300);
-$my-warn: mat.define-palette(mat.$red-palette, 400, 500, 900, 400);
+$my-primary: mat.m2-define-palette(mat.$m2-blue-palette, 400, 500, 900, 400);
+$my-accent: mat.m2-define-palette(mat.$m2-blue-grey-palette, 200, 500, 900, 300);
+$my-warn: mat.m2-define-palette(mat.$m2-red-palette, 400, 500, 900, 400);
 
-$my-theme: mat.define-dark-theme(
+$my-theme: mat.m2-define-dark-theme(
   (
     color: (
       primary: $my-primary,
@@ -60,8 +60,4 @@ body {
 
 .border-right {
   border-right: 0.1px solid #b0bec5 !important;
-}
-
-.mat-badge-content {
-  --mat-badge-background-color: #e57373;
 }
