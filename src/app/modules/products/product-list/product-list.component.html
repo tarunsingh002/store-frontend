@@ -77,15 +77,15 @@
       *ngIf="usingSearch || usingFilter1 || usingFilter2"
       class="d-flex justify-content-center mb-4 results-line"
     >
-      <h3 *ngIf="usingSearch && (usingFilter1 || usingFilter2)">
+      <h5 *ngIf="usingSearch && (usingFilter1 || usingFilter2)">
         {{ 'We found ' + noOfResults + ' product(s) per your applied filter and search query' }}
-      </h3>
-      <h3 *ngIf="usingSearch && !(usingFilter1 || usingFilter2)">
+      </h5>
+      <h5 *ngIf="usingSearch && !(usingFilter1 || usingFilter2)">
         {{ 'We found ' + noOfResults + ' product(s) as per your search query' }}
-      </h3>
-      <h3 *ngIf="!usingSearch && (usingFilter1 || usingFilter2)">
+      </h5>
+      <h5 *ngIf="!usingSearch && (usingFilter1 || usingFilter2)">
         {{ 'We found ' + noOfResults + ' product(s) as per your applied filter' }}
-      </h3>
+      </h5>
     </div>
 
     <!-- Products Grid -->
