@@ -13,27 +13,28 @@
   /* color: #1565c0; */
 }
 
-.cart {
-  /* color: #90caf9; */
-  /* color: #bbdefb; */
+/* .cart {
+  color: #90caf9;
+  color: #bbdefb;
   color: #1565c0;
 }
 
 .account {
-  /* color: #b0beb5; */
-  /* color: #90caf9; */
-  /* color: #bbdefb; */
+  color: #b0beb5; 
+  color: #90caf9;
+  color: #bbdefb;
   color: #1565c0;
-}
+} */
 
 .active {
   /* background-color: black; */
-  background-color: #90a4ae;
+  /* background-color: #90a4ae; */
+  color: white;
 }
 
-.nav-link {
+/* .nav-link {
   color: white !important;
-}
+} */
 
 a[mat-button] {
   font-size: 17px;
@@ -41,7 +42,7 @@ a[mat-button] {
 
 button[mat-button] {
   font-size: 15px;
-  padding: 4px;
+  /* padding: 4px; */
 }
 
 @media (min-width: 992px) {
