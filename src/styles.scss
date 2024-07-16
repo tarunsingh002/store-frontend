@@ -13,6 +13,8 @@ $my-theme: mat.m2-define-dark-theme(
       accent: $my-accent,
       warn: $my-warn,
     ),
+    typography: mat.m2-define-typography-config(),
+    density: 0,
   )
 );
 

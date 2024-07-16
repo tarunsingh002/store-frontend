@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   routerSub: Subscription;
   cSub: Subscription;
   items: number;
-  loggingIn: boolean;
+  loggingIn = false;
   firstName: string;
 
   constructor(

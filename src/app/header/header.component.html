@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="ml-auto mr-0 d-flex align-items-center">
-        <button [matMenuTriggerFor]="menu" mat-fab extended *ngIf="auth" class="mr-3">
+        <button [matMenuTriggerFor]="menu" mat-fab extended *ngIf="auth" class="mr-4">
           <mat-icon class="account">account_circle</mat-icon>
           {{ firstName }}
         </button>
@@ -116,7 +116,7 @@
         </mat-menu>
         <button
           *ngIf="auth && !webmaster"
-          class="mr-1"
+          class="mr-2"
           mat-fab
           extended
           routerLink="/buying/cart"

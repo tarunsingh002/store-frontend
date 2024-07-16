@@ -12,7 +12,7 @@
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title
-            class="mb-1 d-flex flex-column flex-sm-row align-items-start align-items-sm-center"
+            class="mb-2 d-flex flex-column flex-sm-row align-items-start align-items-sm-center"
             ><button
               class="mb-2 mb-sm-0 mr-sm-4"
               [routerLink]="['/products', 'details', product.productId]"
@@ -31,7 +31,7 @@
             </button>
           </mat-card-title>
           <mat-card-subtitle
-            class="mb-1 mr-4"
+            class="mb-2 mr-4"
             *ngFor="let s of product.specification.split(',').slice(0, 3)"
             >&#x2022; {{ s.trim() }}</mat-card-subtitle
           >

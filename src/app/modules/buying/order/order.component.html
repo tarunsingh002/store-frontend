@@ -31,15 +31,15 @@
                 </button>
               </mat-card-title>
               <mat-card-subtitle
-                class="mb-1 mr-4"
+                class="mb-2 mr-4"
                 *ngFor="let s of p.product.specification.split(',').slice(0, 5)"
                 >&#x2022; {{ s.trim() }}</mat-card-subtitle
               >
-              <mat-card-subtitle class="mb-1 mr-4">Quantity: {{ p.quantity }} </mat-card-subtitle>
-              <mat-card-subtitle *ngIf="orderDeliveryStatus[i]" class="mb-1 mr-4"
+              <mat-card-subtitle class="mb-2 mr-4">Quantity: {{ p.quantity }} </mat-card-subtitle>
+              <mat-card-subtitle *ngIf="orderDeliveryStatus[i]" class="mb-2 mr-4"
                 >{{ 'Delivered on ' + orderDeliveryTimeStamps[i] }}
               </mat-card-subtitle>
-              <mat-card-subtitle *ngIf="!orderDeliveryStatus[i]" class="mb-1 mr-4"
+              <mat-card-subtitle *ngIf="!orderDeliveryStatus[i]" class="mb-2 mr-4"
                 >{{ 'Scheduled to be Delivered on ' + orderDeliveryTimeStamps[i] }}
               </mat-card-subtitle>
               <img mat-card-xl-image *ngIf="largePic" [src]="p.product.url" />
