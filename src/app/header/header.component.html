@@ -56,6 +56,7 @@
           class="nav-link mr-lg-1"
           routerLinkActive="active"
           routerLink="/miscellaneous/aboutus"
+          #about="matButton"
         >
           About
         </button>
@@ -123,6 +124,7 @@
           [matBadge]="items"
           [matBadgeHidden]="!items"
           matBadgeColor="warn"
+          #cart="matButton"
         >
           <mat-icon class="cart">shopping_cart</mat-icon>Cart
         </button>

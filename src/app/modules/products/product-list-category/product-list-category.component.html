@@ -20,7 +20,9 @@
         <section class="example-section" [formGroup]="rForm">
           <h5>Brand</h5>
           <p *ngFor="let brand of brands; let i = index">
-            <mat-checkbox [formControlName]="'brand' + (i + 1)">{{ brand }}</mat-checkbox>
+            <mat-checkbox color="primary" [formControlName]="'brand' + (i + 1)">{{
+              brand
+            }}</mat-checkbox>
           </p>
         </section>
       </div>

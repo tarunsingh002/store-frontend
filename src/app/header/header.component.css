@@ -1,40 +1,14 @@
 .signin {
-  /* color: #ef5350; */
-  /* color: #ef9a9a; */
   color: #e57373;
-  /* color: #bbdefb; */
-  /* color: #f8bbd0; */
 }
 
 .feedback {
   color: #90caf9;
-  /* color: #64b5f6; */
-  /* color: #bbdefb; */
-  /* color: #1565c0; */
 }
-
-/* .cart {
-  color: #90caf9;
-  color: #bbdefb;
-  color: #1565c0;
-}
-
-.account {
-  color: #b0beb5; 
-  color: #90caf9;
-  color: #bbdefb;
-  color: #1565c0;
-} */
 
 .active {
-  /* background-color: black; */
-  /* background-color: #90a4ae; */
   color: white;
 }
-
-/* .nav-link {
-  color: white !important;
-} */
 
 a[mat-button] {
   font-size: 17px;

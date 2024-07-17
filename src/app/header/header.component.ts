@@ -1,17 +1,18 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../services/auth-services/auth.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {CartPageService} from '../services/cart-page.service';
 import {AutoLoginService} from '../services/auto-login.service';
 import {Subscription} from 'rxjs';
 import {Cart} from '../models/cart.model';
+import {MatFabButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   auth = false;
   webmaster = false;
   userSub: Subscription;
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   items: number;
   loggingIn = false;
   firstName: string;
+  @ViewChild('cart') cartButton: MatFabButton;
 
   constructor(
     private authS: AuthService,
@@ -45,8 +47,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
 
     this.cSub = this.cservice.cartChanged.subscribe((c) => {
-      if (!c) this.items = 0;
-      else this.items = c.reduce((t: number, i: Cart) => (t = t + i.quantity), 0);
+      if (!c) {
+        this.items = 0;
+        return;
+      }
+      this.items = c.reduce((t: number, i: Cart) => (t = t + i.quantity), 0);
+
+      this.cartButton?.ripple.launch({centered: true});
     });
 
     this.autoLoginSub = this.autoLoginS.loggingIn.subscribe((b) => {
@@ -67,5 +74,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLoginRegister() {
     this.router.navigate(['/auth', 'signin']);
+  }
+
+  ngAfterViewInit(): void {
+    // this.cSub = this.cservice.cartChanged.subscribe((c) => {
+    //   if (!c) {
+    //     this.items = 0;
+    //     return;
+    //   }
+    //   this.items = c.reduce((t: number, i: Cart) => (t = t + i.quantity), 0);
+    //   // this.aboutButton.focus();
+    //   this.cartButton.launch({centered:true});
+    // });
   }
 }

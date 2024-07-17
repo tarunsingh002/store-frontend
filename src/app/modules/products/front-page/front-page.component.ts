@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {concatMap} from 'rxjs/operators';
 import {AuthService} from 'src/app/services/auth-services/auth.service';
 import {AutoLoginService} from 'src/app/services/auto-login.service';
+import {CartPageService} from 'src/app/services/cart-page.service';
+import {ProductDataService} from 'src/app/services/product-data.service';
 import {autoLoginWait} from 'src/app/utilities';
 import {carousel} from 'src/data/CarouselData';
 import {data} from 'src/data/FrontPageData';
@@ -19,7 +22,12 @@ export class FrontPageComponent implements OnInit {
   slide = 0;
   j = 0;
 
-  constructor(private authS: AuthService, private autoLoginS: AutoLoginService) {}
+  constructor(
+    private authS: AuthService,
+    private autoLoginS: AutoLoginService,
+    private cservice: CartPageService,
+    private dservice: ProductDataService
+  ) {}
 
   ngOnInit(): void {
     setInterval(() => {
@@ -33,13 +41,17 @@ export class FrontPageComponent implements OnInit {
     });
 
     if (!this.auth) {
-      this.autoLoginS.loggingIn.next(true);
       this.loggingIn = true;
+      this.autoLoginS.loggingIn.next(true);
       setTimeout(() => {
-        this.authS.signIn('user@gmail.com', 'user1234').subscribe(() => {
-          this.loggingIn = false;
-          this.autoLoginS.loggingIn.next(false);
-        });
+        this.authS
+          .signIn('user@gmail.com', 'user1234')
+          .pipe(concatMap(() => this.dservice.getProductById(3)))
+          .subscribe((res) => {
+            this.cservice.addToCart(res, 1);
+            this.loggingIn = false;
+            this.autoLoginS.loggingIn.next(false);
+          });
       }, autoLoginWait);
     }
   }

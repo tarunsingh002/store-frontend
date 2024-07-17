@@ -5,7 +5,7 @@ import {PageEvent} from '@angular/material/paginator';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subject, Subscription, combineLatest} from 'rxjs';
-import {debounceTime, tap} from 'rxjs/operators';
+import {concatMap, debounceTime, tap} from 'rxjs/operators';
 import {WishlistService} from 'src/app/services/wishlist.service';
 import {AuthService} from '../../../services/auth-services/auth.service';
 import {CartPageService} from '../../../services/cart-page.service';
@@ -132,12 +132,17 @@ export class ProductListCategoryComponent implements OnInit, OnDestroy {
       this.loggingIn = true;
       this.autoLoginS.loggingIn.next(true);
       setTimeout(() => {
-        this.authS.signIn('user@gmail.com', 'user1234').subscribe(() => {
-          this.wlService.getWishList().subscribe(() => {
+        this.authS
+          .signIn('user@gmail.com', 'user1234')
+          .pipe(
+            concatMap(() => this.wlService.getWishList()),
+            concatMap(() => this.dservice.getProductById(3))
+          )
+          .subscribe((res) => {
+            this.cservice.addToCart(res, 1);
             this.loggingIn = false;
             this.autoLoginS.loggingIn.next(false);
           });
-        });
       }, autoLoginWait);
     }
 
