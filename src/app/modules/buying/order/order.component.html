@@ -9,7 +9,7 @@
     <h4 class="text-center mb-5">Your Orders</h4>
     <ng-container *ngFor="let order of orders; let i = index">
       <ng-container *ngFor="let p of order.orderItems; let j = index">
-        <mat-card class="mb-5">
+        <mat-card appearance="outlined" class="mb-5">
           <mat-card-header>
             <mat-card-title-group>
               <mat-card-title class="mb-2">
