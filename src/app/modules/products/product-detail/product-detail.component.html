@@ -1,5 +1,5 @@
 <div class="container margin-top">
-  <div class="border my-5">
+  <!-- <div class="border my-5">
     <div class="row no-gutters">
       <div class="col-lg-6">
         <img class="w-100" [src]="product.url" />
@@ -63,6 +63,21 @@
           </div>
         </div>
       </div>
+    </div>
+  </div> -->
+
+  <div class="my-4">products/{{ product.category.split(', ').join('-') }}</div>
+
+  <div class="row">
+    <div class="col-8">
+      <img class="w-100" [src]="product.url" />
+    </div>
+    <div class="col-4 d-flex flex-column justify-content-around align-items-center">
+      <p>{{ product.brand }}</p>
+      <p>{{ product.name }}</p>
+      <p>{{ product.specification }}</p>
+      <p>{{ product.description }}</p>
+      <p>{{ product.price }}</p>
     </div>
   </div>
 </div>
