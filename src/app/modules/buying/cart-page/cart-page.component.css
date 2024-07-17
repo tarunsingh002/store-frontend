@@ -23,3 +23,7 @@ img {
 .empty {
   height: 72vh;
 }
+
+.cart-page {
+  min-height: 72vh;
+}

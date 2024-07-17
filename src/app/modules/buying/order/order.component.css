@@ -6,3 +6,7 @@ img {
   object-fit: cover;
   object-position: top;
 }
+
+.orders {
+  min-height: 72vh;
+}

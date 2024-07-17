@@ -11,47 +11,42 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="navbar-nav mr-auto align-items-center">
-        <button
+        <a
           mat-button
           class="nav-link mr-lg-1"
           routerLinkActive="active"
           routerLink="/products/home"
         >
           Home
-        </button>
-        <button
+        </a>
+        <a
           mat-button
           routerLink="/products/laptops"
           routerLinkActive="active"
           class="nav-link mr-lg-1"
         >
           Laptops
-        </button>
-        <button
+        </a>
+        <a
           mat-button
           routerLink="/products/mobiles"
           routerLinkActive="active"
           class="nav-link mr-lg-1"
         >
           Mobiles
-        </button>
-        <button
+        </a>
+        <a
           mat-button
           routerLink="/products/printers"
           routerLinkActive="active"
           class="nav-link mr-lg-1"
         >
           Printers
-        </button>
-        <button
-          mat-button
-          class="nav-link mr-lg-1"
-          routerLinkActive="active"
-          routerLink="/products/all"
-        >
+        </a>
+        <a mat-button class="nav-link mr-lg-1" routerLinkActive="active" routerLink="/products/all">
           All Products
-        </button>
-        <button
+        </a>
+        <a
           mat-button
           class="nav-link mr-lg-1"
           routerLinkActive="active"
@@ -59,7 +54,7 @@
           #about="matButton"
         >
           About
-        </button>
+        </a>
         <div class="nav-link mr-2">
           <h5 *ngIf="loggingIn" class="mb-0 signin">Signing you in with a dummy user...</h5>
         </div>

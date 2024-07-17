@@ -4,6 +4,9 @@ import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {Router} from '@angular/router';
+import {concatMap} from 'rxjs/operators';
+import {ProductDataService} from 'src/app/services/product-data.service';
+import {CartPageService} from 'src/app/services/cart-page.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +18,9 @@ export class SignInComponent {
   constructor(
     private authS: AuthService,
     private router: Router,
-    private snackBarService: MatSnackBar
+    private snackBarService: MatSnackBar,
+    private dservice: ProductDataService,
+    private cservice: CartPageService
   ) {}
 
   formSubmitted(form: NgForm) {
@@ -26,6 +31,10 @@ export class SignInComponent {
       (res) => {
         this.isLoading = false;
         this.router.navigate(['/products', 'home']);
+        this.snackBarService.open('You have successfully signed in', 'Okay', {
+          duration: 4000,
+          panelClass: 'snackbar-primary',
+        });
       },
       (error) => {
         this.isLoading = false;
@@ -38,16 +47,18 @@ export class SignInComponent {
 
   loginWithTestCredentials() {
     this.isLoading = true;
-    this.authS.signIn('user@gmail.com', 'user1234').subscribe(
-      (res) => {
-        this.isLoading = false;
+    this.authS
+      .signIn('user@gmail.com', 'user1234')
+      .pipe(concatMap(() => this.dservice.getProductById(3)))
+      .subscribe((res) => {
+        this.snackBarService.open('You have successfully signed in', 'Okay', {
+          duration: 4000,
+          panelClass: 'snackbar-primary',
+        });
         this.router.navigate(['/products', 'home']);
-      },
-      (error) => {
+        this.cservice.addToCart(res, 1);
         this.isLoading = false;
-        this.snackBarService.open(error, 'Okay', {duration: 4000, panelClass: 'snackbar-error'});
-      }
-    );
+      });
   }
 
   onSwitch() {

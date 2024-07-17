@@ -27,6 +27,14 @@ export class SignUpComponent {
         (res) => {
           this.isLoading = false;
           this.router.navigate(['/products', 'home']);
+          this.snackbarService.open(
+            'Your details have been registered and you have been signed in',
+            'Okay',
+            {
+              duration: 4000,
+              panelClass: 'snackbar-primary',
+            }
+          );
         },
         (error) => {
           this.isLoading = false;

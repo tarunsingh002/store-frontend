@@ -16,3 +16,7 @@ img {
 .empty {
   height: 72vh;
 }
+
+.wishlist {
+  min-height: 72vh;
+}

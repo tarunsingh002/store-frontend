@@ -10,11 +10,11 @@
   color: white;
 }
 
-a[mat-button] {
+.navbar-brand {
   font-size: 17px;
 }
 
-button[mat-button] {
+.nav-link {
   font-size: 15px;
   /* padding: 4px; */
 }

@@ -5,7 +5,7 @@
   >
     <h4 class="text-center">You have not placed any orders</h4>
   </div>
-  <div *ngIf="orders.length" class="mb-5">
+  <div *ngIf="orders.length" class="orders">
     <h4 class="text-center mb-5">Your Orders</h4>
     <ng-container *ngFor="let order of orders; let i = index">
       <ng-container *ngFor="let p of order.orderItems; let j = index">
