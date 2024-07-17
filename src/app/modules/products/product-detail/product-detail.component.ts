@@ -5,9 +5,7 @@ import {AuthService} from '../../../services/auth-services/auth.service';
 import {Subscription} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import {CartPageService} from '../../../services/cart-page.service';
-import {map, mergeMap} from 'rxjs/operators';
 import {WishlistService} from 'src/app/services/wishlist.service';
-import {ProductDataService} from 'src/app/services/product-data.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,13 +17,12 @@ export class ProductDetailComponent implements OnInit {
   webmaster = false;
   auth = false;
   sub: Subscription;
-  q = 1;
   wishlisted: boolean = false;
-  loading: boolean;
+  quantity = 1;
 
   constructor(
     private aroute: ActivatedRoute,
-    private dservice: ProductDataService,
+
     private authS: AuthService,
     private cservice: CartPageService,
     private router: Router,
@@ -44,14 +41,14 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  onSubmit(f: NgForm) {
+  addToCart() {
     if (!this.auth || this.webmaster) {
       this.authS.logout();
-      this.router.navigate(['/auth']);
+      this.router.navigate(['/auth/signin']);
       return;
     }
-    let quantity = f.value.quantity;
-    this.cservice.addToCart(this.product, +quantity);
+
+    this.cservice.addToCart(this.product, +this.quantity);
     this.router.navigate(['/buying/cart']);
   }
 

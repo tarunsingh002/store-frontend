@@ -13,7 +13,7 @@ export class LoadingSpinnerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.timer = setTimeout(() => {
       this.wakingUpTheServerSideCode = true;
-    }, 3700);
+    }, 5500);
   }
 
   ngOnDestroy(): void {
