@@ -1,5 +1,6 @@
 <div class="container-lg margin-top">
   <!-- <div class="category mb-4">products/{{ product.category.split(', ').join('-') }}</div> -->
+  <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
 
   <mat-card class="mb-5" appearance="outlined">
     <div class="row">

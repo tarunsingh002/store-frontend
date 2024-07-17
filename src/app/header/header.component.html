@@ -65,11 +65,16 @@
           {{ firstName }}
         </button>
         <mat-menu #menu="matMenu">
-          <button *ngIf="auth" routerLink="/user/profile" routerLinkActive="active" mat-menu-item>
+          <button
+            *ngIf="auth"
+            routerLink="/user/profile"
+            routerLinkActive="menu-active"
+            mat-menu-item
+          >
             Profile
           </button>
           <button
-            routerLinkActive="active"
+            routerLinkActive="menu-active"
             mat-menu-item
             *ngIf="!webmaster && auth"
             routerLink="/products/wishlist"
@@ -77,7 +82,7 @@
             Wishlist
           </button>
           <button
-            routerLinkActive="active"
+            routerLinkActive="menu-active"
             mat-menu-item
             *ngIf="!webmaster && auth"
             routerLink="/buying/orders"
@@ -85,7 +90,7 @@
             Orders
           </button>
           <button
-            routerLinkActive="active"
+            routerLinkActive="menu-active"
             mat-menu-item
             *ngIf="webmaster"
             routerLink="/products/create"
@@ -93,7 +98,7 @@
             Create
           </button>
           <button
-            routerLinkActive="active"
+            routerLinkActive="menu-active"
             mat-menu-item
             *ngIf="webmaster"
             routerLink="/admin/allorders"
@@ -101,7 +106,7 @@
             Orders
           </button>
           <button
-            routerLinkActive="active"
+            routerLinkActive="menu-active"
             mat-menu-item
             *ngIf="webmaster"
             routerLink="/admin/allwishlisted"

@@ -28,3 +28,7 @@
 nav {
   z-index: 20;
 }
+
+.menu-active {
+  background-color: #90a4ae;
+}

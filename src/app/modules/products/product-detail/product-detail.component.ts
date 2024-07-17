@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import {CartPageService} from '../../../services/cart-page.service';
 import {WishlistService} from 'src/app/services/wishlist.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,6 +20,7 @@ export class ProductDetailComponent implements OnInit {
   sub: Subscription;
   wishlisted: boolean = false;
   quantity = 1;
+  progressBar = false;
 
   constructor(
     private aroute: ActivatedRoute,
@@ -26,7 +28,8 @@ export class ProductDetailComponent implements OnInit {
     private authS: AuthService,
     private cservice: CartPageService,
     private router: Router,
-    private wlService: WishlistService
+    private wlService: WishlistService,
+    private snackbarService: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -54,19 +57,31 @@ export class ProductDetailComponent implements OnInit {
 
   addToWishList() {
     this.wlService.addToWishList(this.product).subscribe((res) => {
+      this.progressBar = true;
       if (res === 'Product added to Wishlist') {
         this.wlService.getWishList().subscribe(() => {
+          this.progressBar = false;
           this.wishlisted = true;
+          this.snackbarService.open('Product added to wishlist', 'Great!', {
+            duration: 4000,
+            panelClass: 'snackbar-primary',
+          });
         });
       }
     });
   }
 
   removeFromWishList() {
+    this.progressBar = true;
     this.wlService.removeFromWishList(this.product.productId).subscribe((res) => {
       if (res === 'Product removed from wishlist') {
         this.wlService.getWishList().subscribe(() => {
+          this.progressBar = false;
           this.wishlisted = false;
+          this.snackbarService.open('Product removed from wishlist', 'Okay', {
+            duration: 4000,
+            panelClass: 'snackbar-primary',
+          });
         });
       }
     });

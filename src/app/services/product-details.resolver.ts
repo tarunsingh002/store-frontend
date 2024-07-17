@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {of} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
-import {Product} from '../models/product.model';
+
 import {AuthService} from './auth-services/auth.service';
 import {LoadingService} from './loading.service';
 import {ProductDataService} from './product-data.service';
@@ -20,7 +20,7 @@ export class ProductDetailsResolver {
   ) {}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     this.l.isLoading.next(true);
-    console.log(route.params);
+
     return this.dservice.getProductById(+route.params['id']).pipe(
       switchMap((p) => {
         return this.authS.User.pipe(
