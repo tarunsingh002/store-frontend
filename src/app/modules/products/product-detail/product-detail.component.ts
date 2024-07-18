@@ -56,8 +56,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToWishList() {
+    this.progressBar = true;
     this.wlService.addToWishList(this.product).subscribe((res) => {
-      this.progressBar = true;
       if (res === 'Product added to Wishlist') {
         this.wlService.getWishList().subscribe(() => {
           this.progressBar = false;
