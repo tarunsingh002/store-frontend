@@ -1,3 +1,9 @@
+.icon {
+  width: 2rem;
+  height: 2rem;
+  vertical-align: -0.125em;
+}
+
 .signin {
   color: #e57373;
 }
@@ -11,7 +17,7 @@
 }
 
 .navbar-brand {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .nav-link {

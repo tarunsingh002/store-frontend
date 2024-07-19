@@ -12,7 +12,7 @@ import {MatFabButton} from '@angular/material/button';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   auth = false;
   webmaster = false;
   userSub: Subscription;
@@ -74,17 +74,5 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onLoginRegister() {
     this.router.navigate(['/auth', 'signin']);
-  }
-
-  ngAfterViewInit(): void {
-    // this.cSub = this.cservice.cartChanged.subscribe((c) => {
-    //   if (!c) {
-    //     this.items = 0;
-    //     return;
-    //   }
-    //   this.items = c.reduce((t: number, i: Cart) => (t = t + i.quantity), 0);
-    //   // this.aboutButton.focus();
-    //   this.cartButton.launch({centered:true});
-    // });
   }
 }
