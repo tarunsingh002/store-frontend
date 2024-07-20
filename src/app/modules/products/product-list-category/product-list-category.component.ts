@@ -46,6 +46,7 @@ export class ProductListCategoryComponent implements OnInit, OnDestroy {
   direction = 'asc';
   sorting: boolean;
   rForm: FormGroup;
+  rFormSub: Subscription;
   rForm1: FormGroup;
   filtering: boolean;
 
@@ -171,55 +172,62 @@ export class ProductListCategoryComponent implements OnInit, OnDestroy {
           });
       });
 
-    if (this.aroute.snapshot.data['category']) {
-      let category: string = this.aroute.snapshot.data['category'];
-      this.categoryfilter = [category];
+    this.aroute.data.subscribe((d) => {
+      if (d['category']) {
+        let category: string = this.aroute.snapshot.data['category'];
+        this.categoryfilter = [category];
 
-      if (category === 'mobile')
-        this.brands = ['Apple', 'Samsung', 'Huawei', 'HTC', 'Vivo', 'Oppo'];
-      else if (category === 'laptop')
-        this.brands = ['Apple', 'Dell', 'HP', 'Vaio', 'Samsung', 'Microsoft'];
-      else if (category === 'printer')
-        this.brands = ['Dell', 'HP', 'Sony', 'Epson', 'Canon', 'Samsung'];
+        if (category === 'mobile')
+          this.brands = ['Apple', 'Samsung', 'Huawei', 'HTC', 'Vivo', 'Oppo'];
+        if (category === 'laptop')
+          this.brands = ['Apple', 'Dell', 'HP', 'Vaio', 'Samsung', 'Microsoft'];
+        if (category === 'printer')
+          this.brands = ['Dell', 'HP', 'Sony', 'Epson', 'Canon', 'Samsung'];
 
-      let formObj = {};
+        let formObj = {};
 
-      for (let i = 0; i < this.brands.length; i++) {
-        formObj['brand' + (i + 1)] = new FormControl(false);
-      }
-
-      this.rForm = new FormGroup(formObj);
-    }
-
-    this.rForm.valueChanges.subscribe((brandsboolean) => {
-      this.filtering = true;
-
-      let i = 0;
-      this.brandfilter = [];
-
-      for (const key in brandsboolean) {
-        if (brandsboolean.hasOwnProperty(key)) {
-          if (brandsboolean[key]) {
-            this.brandfilter.push(this.brands[i]);
-          }
-          i++;
+        for (let i = 0; i < this.brands.length; i++) {
+          formObj[this.brands[i]] = new FormControl(false);
         }
-      }
 
-      this.dservice
-        .getProducts(
-          1,
-          this.searchTerm,
-          this.sortBy,
-          this.direction,
-          this.brandfilter,
-          this.categoryfilter
-        )
-        .subscribe(() => {
-          this.filtering = false;
-          if (!this.brandfilter.length) this.usingFilter1 = false;
-          else this.usingFilter1 = true;
+        if (this.rFormSub) {
+          this.rFormSub.unsubscribe();
+          this.rForm.reset();
+        }
+
+        this.rForm = new FormGroup(formObj);
+
+        this.rFormSub = this.rForm.valueChanges.subscribe((brandsboolean) => {
+          this.filtering = true;
+
+          let i = 0;
+          this.brandfilter = [];
+
+          for (const key in brandsboolean) {
+            if (brandsboolean.hasOwnProperty(key)) {
+              if (brandsboolean[key]) {
+                this.brandfilter.push(this.brands[i]);
+              }
+              i++;
+            }
+          }
+
+          this.dservice
+            .getProducts(
+              1,
+              this.searchTerm,
+              this.sortBy,
+              this.direction,
+              this.brandfilter,
+              this.categoryfilter
+            )
+            .subscribe(() => {
+              this.filtering = false;
+              if (!this.brandfilter.length) this.usingFilter1 = false;
+              else this.usingFilter1 = true;
+            });
         });
+      }
     });
   }
 
